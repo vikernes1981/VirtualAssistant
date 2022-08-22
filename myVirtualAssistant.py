@@ -1,6 +1,5 @@
 import speech_recognition as sr
 import subprocess
-import pyttsx3
 import webbrowser
 import datetime
 from gtts import gTTS
@@ -54,7 +53,8 @@ def takeCommandEnglish(language='en-US'):
 def youTube():
 	voice("What do you want to see?")
 	text = takeCommandEnglish('el-GR').lower() # You can change language here to understand exactly what you want in your lang
-
+	#if "παπάρια" in text:
+	#	voice("You are an asshole")
 	return text
 
 
@@ -63,7 +63,7 @@ def youTube():
 def voice(text, lang='en-US'):
 	mytext = text
 	language = lang
-	path = "/home/v1k3rn35/kali/v1k3rn35/Portfolio/VirtualAssistant/" # CHANGE TO YOUR DESIRED PATH
+	path = "/home/" # CHANGE TO YOUR DESIRED PATH
 	myVoice = gTTS(text=mytext, lang=language, slow=False)
 	myVoice.save(path + text + ".mp3")
 	voice = str(path + text + ".mp3")
@@ -141,11 +141,10 @@ def Take_query():
 			# of the website and it automatically open
 			# it in your default browser
 			test = youTube()
-			voice("Opening Youtube")
+			#voice("Opening Youtube")
 			time.sleep(2)
 			webbrowser.open("https://www.youtube.com/results?search_query=" + test)
 			continue
-
 		# Gold movies is a streaming movies site
 		elif (name and "gold movies") in query:
 			test = youTube()
